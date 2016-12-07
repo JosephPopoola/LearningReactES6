@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as taskActions from '../../actions/taskActions';
 import {bindActionCreators} from 'redux';
+import TaskList from './TaskList';
 
 class TaskPage extends Component {
     constructor(props, context) {
@@ -33,11 +34,11 @@ class TaskPage extends Component {
     render() {
         return (
             <div>
-                <h1>Tasks</h1>
-                {this.props.tasks.map(this.taskRow)}
-                <h2>Add Task</h2>
-                <input type="text" onChange={this.onTitleChange} value={this.state.task.title} />
+            <br/>
+                <input type="text" onChange={this.onTitleChange} placeholder="Add Task" value={this.state.task.title} />
                 <input type="submit" onClick={this.onClickSave} />
+                <h1>Tasks</h1>
+                <TaskList tasks = {this.props.tasks}/>    
             </div>
         );
     }

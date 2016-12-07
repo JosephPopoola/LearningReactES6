@@ -1,3 +1,5 @@
+import * as types from './actionTypes';
+
 export function createTask(task){
-    return {type: 'CREATE_TASK', task};
+    return {type: types.createCourse, task};
 }

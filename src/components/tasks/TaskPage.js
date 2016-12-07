@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as taskActions from '../../actions/taskActions';
+import {bindActionCreators} from 'redux';
 
 class TaskPage extends Component {
     constructor(props, context) {
@@ -21,7 +22,8 @@ class TaskPage extends Component {
    } 
 
    onClickSave(){
-       this.props.dispatch(taskActions.createTask(this.state.task));
+       this.props.actions.createTask(this.state.task);
+       this.setState({task: {title: ''}});
    }
 
    taskRow(task, index){
@@ -52,5 +54,11 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-export default connect(mapStateToProps)(TaskPage);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        actions: bindActionCreators(taskActions, dispatch)
+    };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(TaskPage);
 

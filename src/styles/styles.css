@@ -1,3 +1,7 @@
+body{
+    background-color: whitesmoke;
+}
+
 #app{
     font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #4d4d4d;
@@ -7,7 +11,7 @@
 }
 
 a.active {
-    color: orange;
+    color: #4d4d4d;
 }
 
 nav {

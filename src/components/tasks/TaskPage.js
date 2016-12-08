@@ -3,13 +3,15 @@ import {connect} from 'react-redux';
 import * as taskActions from '../../actions/taskActions';
 import {bindActionCreators} from 'redux';
 import TaskList from './TaskList';
+import TextInput from '../common/TextInput';
 
 class TaskPage extends Component {
     constructor(props, context) {
         super(props, context);
         
         this.state ={
-            task: { title: ""}
+            task: { title: ""},
+            errors: ''
         };
 
         this.onClickSave = this.onClickSave.bind(this);
@@ -23,7 +25,7 @@ class TaskPage extends Component {
    } 
 
    onClickSave(){
-       this.props.actions.createTask(this.state.task);
+       this.props.actions.createTaskSuccess(this.state.task);
        this.setState({task: {title: ''}});
    }
 
@@ -35,8 +37,17 @@ class TaskPage extends Component {
         return (
             <div>
             <br/>
-                <input type="text" onChange={this.onTitleChange} placeholder="Add Task" value={this.state.task.title} />
-                <input type="submit" onClick={this.onClickSave} />
+                <TextInput 
+                    name = "TaskPage"
+                    value={this.state.task.title}
+                    onChange={this.onTitleChange}
+                    placeholder="Add Task"
+                    error = {this.state.errors}
+
+                 />
+                <input type="submit" 
+                className="btn btn-primary"
+                onClick={this.onClickSave} />
                 <h1>Tasks</h1>
                 <TaskList tasks = {this.props.tasks}/>    
             </div>

@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 const TaskListRow = ({task}) => {
     return (
         <tr>
-            <td>{task.title}</td>
+            <td><Link to={"/task/"+ task.id}>{task.title}</Link></td>
             <td>{task.complete}</td>
         </tr>
     );

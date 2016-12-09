@@ -4,7 +4,7 @@ import TextInput from '../common/TextInput';
 const TaskEditForm = ({task, onSave, onChange, saving, errors}) => {
   return (
     <form>
-        <h1>Doing the wrong bits for {task.title}</h1>
+      <h1>Doing the wrong bits for {task.title}</h1>
       <TextInput
         name="title"
         label="Title"

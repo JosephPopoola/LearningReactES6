@@ -11,11 +11,12 @@ class TaskPage extends Component {
         
         this.state ={
             task: { title: ""},
-            errors: ''
+            errors: ""
         };
 
         this.onClickSave = this.onClickSave.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
+        this.onComplete = this.onComplete.bind(this);
     }
     
    onTitleChange(e){
@@ -24,8 +25,17 @@ class TaskPage extends Component {
        this.setState({task: task});
    } 
 
+   onComplete(taskClicked){
+       const task = Object.assign({}, taskClicked);
+       task.complete = (task.complete === "true") ? "false" : "true";
+       this.props.actions.saveTask(task);
+   }
+
    onClickSave(){
-       this.props.actions.createTaskSuccess(this.state.task);
+       const task = this.state.task;
+       task.complete = "false";
+       this.setState({task: task});
+       this.props.actions.saveTask(this.state.task);
        this.setState({task: {title: ''}});
    }
 
@@ -47,9 +57,10 @@ class TaskPage extends Component {
                  />
                 <input type="submit" 
                 className="btn btn-primary"
-                onClick={this.onClickSave} />
+                onClick={this.onClickSave}
+                value="Add"/>
                 <h1>Tasks</h1>
-                <TaskList tasks = {this.props.tasks}/>    
+                <TaskList tasks = {this.props.tasks} onComplete={this.onComplete}/>    
             </div>
         );
     }

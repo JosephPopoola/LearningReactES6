@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import TaskListRow from './TaskListRow';
 
-const TaskList = ({tasks, deleteTask}) => {
+const TaskList = ({tasks, deleteTask, onComplete}) => {
         return (
             <table>
                 <thead>
@@ -12,7 +12,7 @@ const TaskList = ({tasks, deleteTask}) => {
                 </thead>
                 <tbody>
                     {tasks.map(task => 
-                        <TaskListRow key={task.id} task={task}/>
+                        <TaskListRow key={task.id} task={task} onComplete={onComplete}/>
                         )}
                 </tbody>
             </table>

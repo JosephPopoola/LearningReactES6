@@ -2,15 +2,15 @@ import * as types from './actionTypes';
 import taskAPI from '../api/mockTaskApi';
 
 //action creators
-export function createTaskSuccess(task){
+function createTaskSuccess(task){
     return {type: types.createTaskSuccess, task};
 }
 
-export function updateTasksSuccess(task){
+function updateTasksSuccess(task){
     return {type: types.updateTaskSuccess, task};
 }
 
-export function loadTasksSuccess(task){
+function loadTasksSuccess(task){
     return {type: types.loadTasksSuccess, task};
 }
 

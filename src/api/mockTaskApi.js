@@ -7,32 +7,27 @@ const tasks = [
   {
     id: "react-flux-building-applications",
     title: "Building Applications in React and Flux",
-    complete: "false",
-    editMode: "false"
+    complete: "false"
   },
   {
     id: "clean-code",
     title: "Clean Code: Writing Code for Humans",
-    complete: "false",
-    editMode: "false"
+    complete: "false"
   },
   {
     id: "architecture",
     title: "Architecting Applications for the Real World",
-    complete: "false",
-    editMode: "false"
+    complete: "false"
   },
   {
     id: "career-reboot-for-developer-mind",
     title: "Becoming an Outlier: Reprogramming the Developer Mind",
-    complete: "false",
-    editMode: "false"
+    complete: "false"
   },
   {
     id: "web-components-shadow-dom",
     title: "Web Component Fundamentals",
-    complete: "false",
-    editMode: "false"
+    complete: "false"
   }
 ];
 

@@ -10,12 +10,18 @@ class TaskEditPage extends Component {
 
         this.state = {
             task: Object.assign({}, this.props.task),
-            errors : {"title": "error :("}
+            errors : {}
         };
 
         this.updateTaskState = this.updateTaskState.bind(this);
         this.saveTask = this.saveTask.bind(this);
     }
+
+  componentWillReceiveProps(nextProps){
+      if(this.props.task.id != nextProps.task.id){
+          this.setState({task: Object.assign({}, nextProps.task)});
+      }
+  }
 
   updateTaskState(event) {
     const field = event.target.name;

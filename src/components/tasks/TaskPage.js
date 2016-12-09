@@ -36,7 +36,14 @@ class TaskPage extends Component {
        const task = this.state.task;
        task.complete = "false";
        this.setState({task: task});
-       this.props.actions.saveTask(this.state.task);
+       this.props.actions.saveTask(this.state.task)
+        .then(() => this.resetState())
+        .catch(error => {
+            toastr.error(error, "Oops!");
+        });
+   }
+
+   resetState(){
        this.setState({task: {title: ''}});
        toastr.success("Bits to be did","Success");
    }

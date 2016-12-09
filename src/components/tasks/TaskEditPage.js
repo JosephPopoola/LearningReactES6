@@ -36,7 +36,11 @@ class TaskEditPage extends Component {
       event.preventDefault();
       this.setState({saving:true});
       this.props.actions.saveTask(this.state.task)
-        .then(()=> this.redirect());
+        .then(()=> this.redirect())
+        .catch(error => {
+            this.setState({saving:false});
+            toastr.error(error, "Oops!");
+        });
       
   }
 

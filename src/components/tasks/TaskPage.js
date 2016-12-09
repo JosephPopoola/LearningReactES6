@@ -6,13 +6,13 @@ import TaskList from './TaskList';
 import TextInput from '../common/TextInput';
 import toastr from 'toastr';
 
-class TaskPage extends Component {
+export class TaskPage extends Component {
     constructor(props, context) {
         super(props, context);
         
         this.state ={
             task: { title: ""},
-            errors: ""
+            errors: {}
         };
 
         this.onClickSave = this.onClickSave.bind(this);
@@ -20,6 +20,19 @@ class TaskPage extends Component {
         this.onComplete = this.onComplete.bind(this);
     }
     
+    isFormValid(){
+        let isFormValid = true;
+        let errors = {};
+
+        if(this.state.task.title.length < 1){
+            errors.title = "You need to add something...";
+            isFormValid = false;
+            this.setState({errors: errors});
+        }
+
+        return isFormValid;
+    }
+
    onTitleChange(e){
        const task = this.state.task;
        task.title = e.target.value;
@@ -33,6 +46,10 @@ class TaskPage extends Component {
    }
 
    onClickSave(){
+       if(!this.isFormValid()){
+           return;
+       }
+
        const task = this.state.task;
        task.complete = "false";
        this.setState({task: task});
@@ -61,7 +78,7 @@ class TaskPage extends Component {
                     value={this.state.task.title}
                     onChange={this.onTitleChange}
                     placeholder="Add Task"
-                    error = {this.state.errors}
+                    error = {this.state.errors.title}
 
                  />
                 <input type="submit" 

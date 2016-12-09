@@ -32,7 +32,12 @@ class TaskEditPage extends Component {
 
   saveTask(event){
       event.preventDefault();
-      this.props.actions.saveTask(this.state.task);
+      this.props.actions.saveTask(this.state.task)
+        .then(()=> this.redirect());
+      
+  }
+
+  redirect(){
       this.context.router.push('/tasks');
   }
 

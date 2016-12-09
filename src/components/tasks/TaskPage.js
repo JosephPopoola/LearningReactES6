@@ -4,6 +4,7 @@ import * as taskActions from '../../actions/taskActions';
 import {bindActionCreators} from 'redux';
 import TaskList from './TaskList';
 import TextInput from '../common/TextInput';
+import toastr from 'toastr';
 
 class TaskPage extends Component {
     constructor(props, context) {
@@ -37,6 +38,7 @@ class TaskPage extends Component {
        this.setState({task: task});
        this.props.actions.saveTask(this.state.task);
        this.setState({task: {title: ''}});
+       toastr.success("Bits to be did","Success");
    }
 
    taskRow(task, index){

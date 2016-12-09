@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as taskActions from '../../actions/taskActions';
 import TaskEditForm from './TaskEditForm';
+import toastr from 'toastr';
 
 class TaskEditPage extends Component {
     constructor(props, context) {
@@ -10,7 +11,8 @@ class TaskEditPage extends Component {
 
         this.state = {
             task: Object.assign({}, this.props.task),
-            errors : {}
+            errors : '',
+            saving: false
         };
 
         this.updateTaskState = this.updateTaskState.bind(this);
@@ -32,12 +34,15 @@ class TaskEditPage extends Component {
 
   saveTask(event){
       event.preventDefault();
+      this.setState({saving:true});
       this.props.actions.saveTask(this.state.task)
         .then(()=> this.redirect());
       
   }
 
   redirect(){
+      this.setState({saving:false});
+      toastr.success("Bits is really right", "Success");
       this.context.router.push('/tasks');
   }
 
@@ -48,7 +53,7 @@ class TaskEditPage extends Component {
                 task={this.state.task}
                 onSave={this.saveTask}
                 onChange={this.updateTaskState}
-                saving={false}
+                saving={this.state.saving}
                 errors=""/>
             </div>
         );

@@ -10,7 +10,7 @@ const TaskEditForm = ({task, onSave, onChange, saving, errors}) => {
         label="Title"
         value={task.title}
         onChange={onChange}
-        error={errors.title}/>
+        error={errors}/>
 
       <input
         type="submit"
@@ -27,7 +27,7 @@ TaskEditForm.propTypes = {
   onSave: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
   saving: React.PropTypes.bool,
-  errors: React.PropTypes.object
+  errors: React.PropTypes.string
 };
 
 export default TaskEditForm;
